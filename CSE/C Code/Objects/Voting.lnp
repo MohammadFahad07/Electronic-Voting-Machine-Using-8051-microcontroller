@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\Voting.obj" 
+TO ".\Objects\Voting" 
+PRINT(".\Listings\Voting.m51") RAMSIZE(256) 

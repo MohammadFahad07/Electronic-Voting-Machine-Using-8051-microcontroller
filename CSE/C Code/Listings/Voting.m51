@@ -1,0 +1,232 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    09/04/2020  23:23:30  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\PROGRAM FILES (X86)\C51\BIN\BL51.EXE .\Objects\STARTUP.obj, .\Objects\Voting.obj TO .\Objects\Voting PRINT (.\Listing
+>> s\Voting.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\STARTUP.obj (?C_STARTUP)
+  .\Objects\Voting.obj (VOTING)
+  C:\PROGRAM FILES (X86)\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\Objects\Voting (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0024H     UNIT         ?DT?VOTING
+            DATA    002CH     0002H     UNIT         _DATA_GROUP_
+            IDATA   002EH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     009FH     UNIT         ?PR?CALC_VOTE?VOTING
+            CODE    089FH     008CH     UNIT         ?C_C51STARTUP
+            CODE    092BH     0020H     UNIT         ?PR?_DELAY?VOTING
+            CODE    094BH     001EH     UNIT         ?PR?MAIN?VOTING
+            CODE    0969H     0017H     UNIT         ?C_INITSEG
+            CODE    0980H     0015H     UNIT         ?PR?_DIGI_OUT?VOTING
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\Voting (?C_STARTUP)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?VOTING
+  +--> ?C_INITSEG
+
+?PR?MAIN?VOTING                -----    -----
+  +--> ?PR?CALC_VOTE?VOTING
+
+?PR?CALC_VOTE?VOTING           -----    -----
+  +--> ?PR?_DIGI_OUT?VOTING
+
+?PR?_DIGI_OUT?VOTING           002CH    0002H
+  +--> ?PR?_DELAY?VOTING
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/04/2020  23:23:30  PAGE 2
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\Voting (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:089FH         SEGMENT       ?C_C51STARTUP
+  I:002EH         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:08A2H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:089FH         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:089FH         LINE#         133
+  C:08A1H         LINE#         134
+  C:08A2H         LINE#         135
+  C:08A3H         LINE#         136
+  C:08A5H         LINE#         185
+  C:08A8H         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        VOTING
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  C:092BH         PUBLIC        _delay
+  B:00B0H.2       PUBLIC        s1
+  B:00B0H.3       PUBLIC        s2
+  B:00B0H.4       PUBLIC        s3
+  C:094BH         PUBLIC        main
+  D:0008H         PUBLIC        v1
+  B:00B0H.5       PUBLIC        s4
+  D:000AH         PUBLIC        v2
+  D:000CH         PUBLIC        v3
+  D:000EH         PUBLIC        v4
+  C:0800H         PUBLIC        calc_vote
+  D:0010H         PUBLIC        digi_val
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/04/2020  23:23:30  PAGE 3
+
+
+  D:0024H         PUBLIC        dig_1
+  D:0026H         PUBLIC        dig_2
+  D:0028H         PUBLIC        dig_3
+  B:0090H.3       PUBLIC        ctrl_1
+  D:002AH         PUBLIC        dig_4
+  B:0090H.2       PUBLIC        ctrl_2
+  B:0090H.1       PUBLIC        ctrl_3
+  B:0090H.0       PUBLIC        ctrl_4
+  C:0980H         PUBLIC        _digi_out
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        count
+  -------         DO            
+  D:0004H         SYMBOL        j
+  D:0002H         SYMBOL        k
+  -------         ENDDO         
+  C:092BH         LINE#         22
+  C:092BH         LINE#         23
+  C:092BH         LINE#         25
+  C:0935H         LINE#         26
+  C:094AH         LINE#         27
+  -------         ENDPROC       _DELAY
+  -------         PROC          _DIGI_OUT
+  D:0006H         SYMBOL        current_num
+  -------         DO            
+  D:002CH         SYMBOL        dig_disp
+  -------         ENDDO         
+  C:0980H         LINE#         29
+  C:0980H         LINE#         30
+  C:0980H         LINE#         32
+  C:0984H         LINE#         33
+  C:098EH         LINE#         34
+  -------         ENDPROC       _DIGI_OUT
+  -------         PROC          CALC_VOTE
+  C:0800H         LINE#         38
+  C:0800H         LINE#         39
+  C:0800H         LINE#         40
+  C:0800H         LINE#         41
+  C:0800H         LINE#         42
+  C:0803H         LINE#         43
+  C:0803H         LINE#         44
+  C:0806H         LINE#         45
+  C:0806H         LINE#         46
+  C:080EH         LINE#         47
+  C:0814H         LINE#         48
+  C:0818H         LINE#         49
+  C:0818H         LINE#         50
+  C:0818H         LINE#         52
+  C:081BH         LINE#         53
+  C:081BH         LINE#         54
+  C:081EH         LINE#         55
+  C:081EH         LINE#         56
+  C:0826H         LINE#         57
+  C:082CH         LINE#         58
+  C:0830H         LINE#         59
+  C:0830H         LINE#         60
+  C:0830H         LINE#         62
+  C:0833H         LINE#         63
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/04/2020  23:23:30  PAGE 4
+
+
+  C:0833H         LINE#         64
+  C:0836H         LINE#         65
+  C:0836H         LINE#         66
+  C:083EH         LINE#         67
+  C:0844H         LINE#         68
+  C:0848H         LINE#         69
+  C:0848H         LINE#         70
+  C:0848H         LINE#         72
+  C:084BH         LINE#         73
+  C:084BH         LINE#         74
+  C:084EH         LINE#         75
+  C:084EH         LINE#         76
+  C:0856H         LINE#         77
+  C:085CH         LINE#         78
+  C:0860H         LINE#         79
+  C:0860H         LINE#         80
+  C:0860H         LINE#         82
+  C:0862H         LINE#         83
+  C:0868H         LINE#         84
+  C:086FH         LINE#         85
+  C:0871H         LINE#         86
+  C:0877H         LINE#         87
+  C:087EH         LINE#         88
+  C:0880H         LINE#         89
+  C:0886H         LINE#         90
+  C:088DH         LINE#         91
+  C:088FH         LINE#         92
+  C:0895H         LINE#         93
+  C:089CH         LINE#         94
+  -------         ENDPROC       CALC_VOTE
+  -------         PROC          MAIN
+  C:094BH         LINE#         98
+  C:094BH         LINE#         99
+  C:094BH         LINE#         100
+  C:095CH         LINE#         101
+  C:0964H         LINE#         102
+  C:0964H         LINE#         103
+  C:0964H         LINE#         104
+  C:0967H         LINE#         105
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        VOTING
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0117H BYTE (13%) *
+******************************************************************************
+
+Program Size: data=47.0 xdata=0 code=408
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
